@@ -1,94 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Otto & Mark's Seasonal Services</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f0f4f8;
+      background: #f4f4f9;
+      color: #333;
     }
+
     header {
-      background: #1b4d89;
-      color: white;
-      padding: 20px;
+      background: #2c3e50;
+      color: #fff;
+      padding: 30px 0;
       text-align: center;
     }
-    .section {
-      padding: 30px;
-      max-width: 900px;
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 800px;
       margin: auto;
     }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
     .services {
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
     }
-    .card {
-      background: white;
+
+    .service {
+      background: #fff;
       padding: 20px;
       border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       width: 250px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       text-align: center;
     }
-    footer {
-      background: #1b4d89;
-      color: white;
+
+    .contact {
+      background: #ecf0f1;
+      padding: 30px 20px;
+      border-radius: 12px;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
     }
-    button {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 8px;
-      background: #1b4d89;
-      color: white;
-      cursor: pointer;
-      margin-top: 10px;
+
+    .contact p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .contact a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Otto & Mark's Seasonal Services</h1>
-    <p>Reliable snow shoveling and leaf raking in your neighborhood</p>
+    <p>Leaf Raking & Snow Shoveling in Maplewood, NJ</p>
   </header>
 
-  <div class="section">
+  <section class="services">
     <h2>Our Services</h2>
     <div class="services">
-      <div class="card">
-        <h3>Snow Shoveling</h3>
-        <p>Driveways, walkways, and steps cleared quickly and safely.</p>
-        <button>Request Service</button>
-      </div>
-      <div class="card">
+      <div class="service">
         <h3>Leaf Raking</h3>
-        <p>Yard cleanup and leaf bagging to keep your property neat.</p>
-        <button>Request Service</button>
+        <p>We make your yard clean and tidy during the fall season.</p>
+      </div>
+      <div class="service">
+        <h3>Snow Shoveling</h3>
+        <p>Quick and reliable snow removal for your driveway and walkways.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <h2>About Us</h2>
-    <p>We are Otto and Mark, two hardworking students offering affordable and dependable yard care services. We work fast, show up on time, and make sure the job is done right.</p>
-  </div>
-
-  <div class="section">
+  <section class="contact">
     <h2>Contact Us</h2>
-    <p>Email: <strong>yardservices@example.com</strong></p>
-    <p>Phone: <strong>(555) 123-4567</strong></p>
-  </div>
+    <p>Call Otto: <a href="tel:9177159244">917-715-9244</a></p>
+    <p>Call Mark: <a href="tel:+12014074632">+1 (201) 407-4632</a></p>
+    <p>Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
+    <p>Serving Maplewood, NJ and surrounding areas</p>
+  </section>
 
-  <footer>
-    <p>© 2025 Otto & Mark's Seasonal Services</p>
-  </footer>
 </body>
 </html>
