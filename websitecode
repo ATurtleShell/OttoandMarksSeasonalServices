@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Otto & Mark's Seasonal Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4f8;
+    }
+    header {
+      background: #1b4d89;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .services {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    footer {
+      background: #1b4d89;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #1b4d89;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Otto & Mark's Seasonal Services</h1>
+    <p>Reliable snow shoveling and leaf raking in your neighborhood</p>
+  </header>
+
+  <div class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Snow Shoveling</h3>
+        <p>Driveways, walkways, and steps cleared quickly and safely.</p>
+        <button>Request Service</button>
+      </div>
+      <div class="card">
+        <h3>Leaf Raking</h3>
+        <p>Yard cleanup and leaf bagging to keep your property neat.</p>
+        <button>Request Service</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>About Us</h2>
+    <p>We are Otto and Mark, two hardworking students offering affordable and dependable yard care services. We work fast, show up on time, and make sure the job is done right.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact Us</h2>
+    <p>Email: <strong>yardservices@example.com</strong></p>
+    <p>Phone: <strong>(555) 123-4567</strong></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Otto & Mark's Seasonal Services</p>
+  </footer>
+</body>
+</html>
