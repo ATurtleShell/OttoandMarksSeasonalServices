@@ -1,169 +1,607 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holiday Website</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Otto & Mark's Seasonal Services — Maplewood, NJ</title>
 
-<style>
-/* -------------------------------------------------------------
-   GLOBAL STYLE — colorful, lively, modern
---------------------------------------------------------------*/
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #ffecd2, #fcb69f);
-  animation: backgroundShift 10s infinite alternate ease-in-out;
-  color: #2c2c2c;
+  <style>
+
+/* -------------------------
+   ROOT / GLOBAL
+   ------------------------- */
+:root{
+  --bg-1: #071819;
+  --bg-2: #153c2f;
+  --card: rgba(255,255,255,0.06);
+  --accent: #ffd966;
+  --accent-2: #ff6b6b;
+  --muted: #cfe9d8;
+  --glass: rgba(255,255,255,0.06);
+  --glass-2: rgba(255,255,255,0.04);
+  --green: #30c77b;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #eef7f0;
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(45,120,70,0.12), transparent),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
 }
 
-/* Soft background animation */
-@keyframes backgroundShift {
-  0% { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
-  100% { background: linear-gradient(135deg, #c3f3ff, #ffd6e8); }
+/* -------------------------
+   HANGING LIGHTS (top)
+   ------------------------- */
+.lights-wrap{
+  position:relative;
+  width:100%;
+  padding-top:18px;
+  padding-bottom:6px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  pointer-events:none;
+}
+.lights-string{
+  position:absolute;
+  top:25px;
+  left:0;
+  right:0;
+  height:0;
+  border-top:3px solid rgba(0,0,0,0.35);
+  transform-origin:center;
+  pointer-events:none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+}
+.bulb{
+  --w:22px; --h:34px;
+  width:var(--w);
+  height:var(--h);
+  border-radius:50% 50% 45% 45%;
+  display:inline-block;
+  margin:0 12px;
+  transform-origin:center top;
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  position:relative;
+  top: -6px;
+  pointer-events:none;
+}
+/* cord */
+.bulb::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:-18px;
+  width:3px;
+  height:18px;
+  background:linear-gradient(180deg,#111, #222);
+  border-radius:2px;
+  pointer-events:none;
 }
 
-/* -------------------------------------------------------------
-   CHRISTMAS LIGHTS STRIP
---------------------------------------------------------------*/
-.christmas-lights {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  padding: 25px 0;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(5px);
+/* colors & glow */
+.b-red{ background:#ff6b6b; box-shadow:0 0 14px rgba(255,107,107,0.75); }
+.b-green{ background:#32ff9d; box-shadow:0 0 14px rgba(50,255,157,0.75); }
+.b-blue{ background:#4cc7ff; box-shadow:0 0 14px rgba(76,199,255,0.75); }
+.b-gold{ background:#ffd966; box-shadow:0 0 14px rgba(255,217,102,0.75); }
+.b-pink{ background:#ff9de1; box-shadow:0 0 12px rgba(255,157,225,0.7); }
+
+/* subtle bobbing + staggered glow */
+@keyframes bulb-bounce { 0%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}100%{transform:translateY(0) rotate(-2deg)} }
+@keyframes bulb-glow { 0%{opacity:0.65; transform:scale(1)}100%{opacity:1; transform:scale(1.12)} }
+
+.bulb { animation: bulb-bounce 3.4s ease-in-out infinite; }
+.bulb:nth-child(1){ animation-delay: 0ms }
+.bulb:nth-child(2){ animation-delay: 140ms }
+.bulb:nth-child(3){ animation-delay: 280ms }
+.bulb:nth-child(4){ animation-delay: 420ms }
+.bulb:nth-child(5){ animation-delay: 560ms }
+.bulb:nth-child(6){ animation-delay: 700ms }
+.bulb:nth-child(7){ animation-delay: 860ms }
+
+/* -------------------------
+   HEADER
+   ------------------------- */
+.header{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  max-width:1100px;
+  margin:16px auto;
+  padding:18px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+  box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+}
+.header img{
+  width:96px;
+  height:96px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.55);
 }
 
-.bulb {
-  width: 24px;
-  height: 38px;
-  border-radius: 50%;
-  animation: glow 1s infinite alternate;
+/* title */
+.site-title h1{
+  margin:0;
+  font-size:1.6rem;
+  color:var(--accent);
+  letter-spacing:0.6px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+.site-title p{ margin:6px 0 0; color:var(--muted) }
+
+/* -------------------------
+   LAYOUT GRID
+   ------------------------- */
+.main{
+  max-width:1100px;
+  margin:18px auto 64px;
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap:22px;
+  padding:0 16px;
 }
 
-/* Bulb colors */
-.red { background: #ff4b4b; box-shadow: 0 0 14px #ff4b4b; }
-.green { background: #32ff7e; box-shadow: 0 0 14px #32ff7e; }
-.blue { background: #18dcff; box-shadow: 0 0 14px #18dcff; }
-.yellow { background: #fff200; box-shadow: 0 0 14px #fff200; }
-.pink { background: #ff99ff; box-shadow: 0 0 14px #ff99ff; }
-
-/* Light animation */
-@keyframes glow {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.3); opacity: 1; }
+/* left column content */
+.panel{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-radius:12px;
+  padding:22px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.5);
 }
 
-/* Stagger the flickers */
-.bulb:nth-child(1) { animation-delay: 0ms; }
-.bulb:nth-child(2) { animation-delay: 200ms; }
-.bulb:nth-child(3) { animation-delay: 400ms; }
-.bulb:nth-child(4) { animation-delay: 600ms; }
-.bulb:nth-child(5) { animation-delay: 800ms; }
-.bulb:nth-child(6) { animation-delay: 1000ms; }
-.bulb:nth-child(7) { animation-delay: 1200ms; }
+/* service cards */
+.services{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.service{
+  flex:1 1 calc(33% - 12px);
+  min-width:180px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+  padding:14px;
+  border-radius:10px;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  text-decoration:none;
+  color:inherit;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.45);
+}
+.service:hover{ transform:translateY(-8px); box-shadow:0 28px 40px rgba(0,0,0,0.6); }
+.service h3{ margin:0 0 6px; color:var(--accent) }
+.service p{ margin:0; color:var(--muted) }
 
-/* -------------------------------------------------------------
-   MAIN CONTENT CONTAINER
---------------------------------------------------------------*/
-.container {
-  text-align: center;
-  margin-top: 50px;
-  padding: 30px;
+/* large CTA */
+.cta{
+  display:flex;
+  gap:12px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-block;
+  padding:12px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#081a12;
+  background: linear-gradient(180deg, var(--accent), #f5b84a);
+  box-shadow:0 10px 20px rgba(0,0,0,0.35);
+  transition: transform .12s ease;
+}
+.btn.secondary{
+  background: linear-gradient(180deg, #7be495, #36ce83);
+  color:#052214;
+}
+.btn:active{ transform:translateY(2px) }
+
+/* -------------------------
+   RIGHT SIDEBAR
+   ------------------------- */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  position:sticky;
+  top:18px;
+}
+.info{
+  padding:14px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  box-shadow: 0 10px 20px rgba(0,0,0,0.45);
+}
+.info h4{ margin:0 0 8px; color:var(--accent) }
+.info p{ margin:0; color:var(--muted) }
+
+/* contact list */
+.contact-list a{ display:block; color:var(--muted); text-decoration:none; margin-bottom:6px; }
+.contact-list a strong{ color:var(--accent-2); }
+
+/* small badges */
+.badge{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); color:var(--muted); font-weight:600; }
+
+/* -------------------------
+   PRICING SECTION (anchor target)
+   ------------------------- */
+.pricing{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.price{
+  padding:14px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  box-shadow:0 10px 20px rgba(0,0,0,0.45);
+}
+.price h3{ margin:0 0 8px; color:var(--accent) }
+.price ul{ margin:0; padding-left:18px; color:var(--muted) }
+
+/* call-to-pay row */
+.pay-row{ margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.pay-pill{ padding:8px 12px; border-radius:8px; background:linear-gradient(180deg,#ffffff10,#00000010); color:var(--muted); font-weight:600 }
+
+/* -------------------------
+   PRICING DETAILS (modal)
+   ------------------------- */
+.modal-backdrop{
+  position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:90;
+  background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+}
+.modal{
+  width:92%;
+  max-width:720px;
+  background: linear-gradient(180deg, #0f2a21, #08221a);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
 }
 
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 0 12px rgba(255,255,255,0.7);
-  animation: titlePulse 2.5s infinite ease-in-out alternate;
+/* -------------------------
+   SNOW + STARS (background)
+   ------------------------- */
+.snow-layer, .stars-layer{
+  position:fixed; inset:0; pointer-events:none; z-index:2;
+}
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:rgba(255,255,255,0.9);
+  border-radius:50%;
+  opacity:0.9;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  animation: star-twinkle 4s infinite ease-in-out;
+}
+@keyframes star-twinkle {
+  0%{opacity:0.2; transform:scale(0.8)}
+  50%{opacity:1; transform:scale(1.2)}
+  100%{opacity:0.2; transform:scale(0.8)}
 }
 
-@keyframes titlePulse {
-  0% { transform: scale(1); opacity: 0.9; }
-  100% { transform: scale(1.05); opacity: 1; }
+/* falling snow particle */
+.snow{
+  position:absolute;
+  top:-10%;
+  width:6px; height:6px;
+  background:rgba(255,255,255,0.9);
+  border-radius:50%;
+  filter: blur(0.8px);
+  opacity:0.85;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(180deg); opacity:0.2 }
 }
 
-/* Card styling */
-.card {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
-  max-width: 750px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  animation: slideIn 1s ease forwards;
+/* -------------------------
+   FOOTER
+   ------------------------- */
+.footer{
+  max-width:1100px;
+  margin:28px auto;
+  text-align:center;
+  color:var(--muted);
+  padding:18px;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(25px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* -------------------------
+   RESPONSIVE
+   ------------------------- */
+@media (max-width:980px){
+  .main{ grid-template-columns: 1fr; padding-bottom: 40px; }
+  .pricing{ grid-template-columns: 1fr; }
+  .service{ min-width: 48%; }
+  .header img{ width:76px; height:76px; }
+}
+@media (max-width:560px){
+  .service{ min-width:100%; }
+  .bulb{ margin:0 8px; --w:18px; --h:28px; top:-4px }
 }
 
-.card h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-/* Buttons */
-.button {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #ff4b4b;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.button:hover {
-  background: #ff2e2e;
-  transform: scale(1.06);
-  box-shadow: 0 0 12px rgba(255,80,80,0.8);
-}
-
-</style>
+  </style>
 </head>
 <body>
 
-<!-- 🎄 CHRISTMAS LIGHTS -->
-<div class="christmas-lights">
-  <div class="bulb red"></div>
-  <div class="bulb green"></div>
-  <div class="bulb blue"></div>
-  <div class="bulb yellow"></div>
-  <div class="bulb pink"></div>
-  <div class="bulb red"></div>
-  <div class="bulb green"></div>
-</div>
+  <!-- SNOW + STARS layers for lively background -->
+  <div class="stars-layer" aria-hidden="true" id="stars-layer"></div>
+  <div class="snow-layer" aria-hidden="true" id="snow-layer"></div>
 
-<!-- ✨ WEBSITE CONTENT -->
-<div class="container">
-  <h1 class="title">Welcome to My Holiday Website!</h1>
+  <!-- HANGING LIGHTS -->
+  <div class="lights-wrap" aria-hidden="true">
+    <div class="lights-string" aria-hidden="true"></div>
+    <div style="display:flex; gap:12px; position:relative; z-index:6; pointer-events:none;">
+      <span class="bulb b-red"></span>
+      <span class="bulb b-green"></span>
+      <span class="bulb b-blue"></span>
+      <span class="bulb b-gold"></span>
+      <span class="bulb b-pink"></span>
+      <span class="bulb b-red"></span>
+      <span class="bulb b-green"></span>
+    </div>
+  </div>
 
-  <div class="card">
-    <h2>Season’s Greetings!</h2>
-    <p>This website has been enhanced with lively holiday colors, animated glowing lights, and smooth transitions to bring cheerful energy to your page.</p>
-    <br>
-    <a class="button" href="#">Learn More</a>
-  </div>
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <!-- use your uploaded file path here -->
+    <img src="/mnt/data/PNG image.png" alt="Otto & Mark's Seasonal Services logo or header image" />
+    <div class="site-title" role="heading" aria-level="1">
+      <h1>Otto & Mark's Seasonal Services</h1>
+      <p>Reliable snow shoveling • salting • leaf raking — Maplewood, NJ</p>
+      <div style="margin-top:8px;">
+        <span class="badge">Cash</span>
+        <span class="badge" style="margin-left:8px;">CashApp accepted</span>
+      </div>
+    </div>
+  </header>
 
-  <div class="card">
-    <h2>What Was Added?</h2>
-    <ul style="text-align:left; font-size:1.1rem; max-width:600px; margin:0 auto;">
-      <li>✨ Animated glowing Christmas lights across the top</li>
-      <li>🌈 A colorful shifting background</li>
-      <li>🎨 Soft neon shadows and vibrant UI styling</li>
-      <li>🎁 Smooth slide-in animations for elements</li>
-      <li>❄ A modern, lively card layout</li>
-    </ul>
-  </div>
-</div>
+  <main class="main" role="main">
+    <!-- LEFT COLUMN -->
+    <section class="panel" aria-labelledby="services-heading">
+      <h2 id="services-heading" style="color:var(--accent); margin:0 0 6px;">Seasonal Services</h2>
+      <p style="margin:0 0 10px; color:var(--muted);">Click a service for more details. Pricing is simple and transparent.</p>
 
+      <div class="services" role="list">
+        <a class="service" data-service="snow" href="#pricing" role="listitem" onclick="openQuick(event,'Snow Shoveling')">
+          <h3>Snow Shoveling</h3>
+          <p>Base clearing of driveways & walkways — <strong>$25</strong></p>
+        </a>
+
+        <a class="service" data-service="salt" href="#pricing" role="listitem" onclick="openQuick(event,'Salting')">
+          <h3>Salting</h3>
+          <p>Add traction & ice prevention — <strong>$10 (add-on to another service)</strong></p>
+        </a>
+
+        <a class="service" data-service="rake" href="#pricing" role="listitem" onclick="openQuick(event,'Leaf Raking')">
+          <h3>Leaf Raking</h3>
+          <p>Yard cleanup, bagging included — <strong>$25</strong></p>
+        </a>
+      </div>
+
+      <div style="margin-top:18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <a class="btn" href="tel:+19177159244">Call Otto (917) 715-9244</a>
+        <a class="btn secondary" href="mailto:hubschmannotto@gmail.com">Email: hubschmannotto@gmail.com</a>
+        <a class="btn" href="#pricing" style="background:linear-gradient(180deg,#8ee3c9,#2ecb8a); color:#002214">See Pricing</a>
+      </div>
+
+      <!-- About -->
+      <div style="margin-top:22px; padding:16px; border-radius:10px; background:var(--glass-2); color:var(--muted)">
+        <strong>About Otto & Mark</strong>
+        <p style="margin:8px 0 0;">A neighborhood-first seasonal service team in Maplewood, NJ. Friendly, punctual, and insured for basic yard work. References available upon request.</p>
+      </div>
+
+      <!-- PRICING SECTION INSIDE LEFT COLUMN -->
+      <div id="pricing" style="margin-top:22px;">
+        <h2 style="color:var(--accent); margin-bottom:8px;">Pricing</h2>
+        <div class="pricing" role="list">
+          <div class="price" id="price-snow" role="listitem">
+            <h3>Snow Shoveling</h3>
+            <ul>
+              <li>Base price: <strong>$25</strong></li>
+              <li>Clears driveway & walkways where safe to do so</li>
+            </ul>
+            <div class="pay-row">
+              <div class="pay-pill">Payment: Cash / CashApp</div>
+              <a class="btn" href="tel:+19177159244">Book Now</a>
+            </div>
+          </div>
+
+          <div class="price" id="price-salt" role="listitem">
+            <h3>Salting (Add-on)</h3>
+            <ul>
+              <li>Price: <strong>$10</strong> — must be added to another service visit</li>
+              <li>Recommended with snow shoveling for best safety</li>
+            </ul>
+            <div class="pay-row">
+              <div class="pay-pill">Adds to order</div>
+              <a class="btn secondary" href="tel:+19177159244">Add Salt</a>
+            </div>
+          </div>
+
+          <div class="price" id="price-rake" role="listitem">
+            <h3>Leaf Raking</h3>
+            <ul>
+              <li>Base price: <strong>$25</strong></li>
+              <li>Includes bagging and curbside-ready piles (if available)</li>
+            </ul>
+            <div class="pay-row">
+              <div class="pay-pill">Payment: Cash / CashApp</div>
+              <a class="btn" href="tel:+12014074632">Book Mark (201) 407-4632</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar" aria-labelledby="contact-heading">
+      <div class="info" id="contact">
+        <h4 id="contact-heading" style="margin:0 0 8px; color:var(--accent);">Contact & Scheduling</h4>
+        <div class="contact-list">
+          <a href="tel:+19177159244"><strong>Otto</strong> — (917) 715-9244</a>
+          <a href="tel:+12014074632"><strong>Mark</strong> — (201) 407-4632</a>
+          <a href="mailto:hubschmannotto@gmail.com"><strong>Email</strong> — hubschmannotto@gmail.com</a>
+        </div>
+        <p style="margin-top:10px; color:var(--muted)">Serving Maplewood, NJ & nearby neighborhoods. Insured for basic yard work.</p>
+      </div>
+
+      <div class="info">
+        <h4 style="margin:0 0 6px; color:var(--accent);">Quick Info</h4>
+        <p style="margin:0 0 8px; color:var(--muted)">Payment options:</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="pay-pill">Cash</div>
+          <div class="pay-pill">CashApp</div>
+        </div>
+      </div>
+
+      <div class="info">
+        <h4 style="margin:0 0 6px; color:var(--accent);">Notes</h4>
+        <p style="margin:0; color:var(--muted)">Salting is an add-on (+$10) to a regular service. Raking and shoveling are $25 each.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div style="max-width:1100px; margin:0 auto;">
+      <small>© Otto & Mark's Seasonal Services — Maplewood, NJ • <span style="color:var(--muted)">Call: (917) 715-9244 • (201) 407-4632 • hubschmannotto@gmail.com</span></small>
+    </div>
+  </footer>
+
+  <!-- MODAL (service details) -->
+  <div class="modal-backdrop" id="modal" aria-hidden="true" onclick="closeModal()">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="event.stopPropagation()">
+      <h3 id="modal-title" style="margin-top:0;color:var(--accent);">Service</h3>
+      <p id="modal-body" style="color:var(--muted)"></p>
+      <div style="margin-top:14px; display:flex; gap:10px; justify-content:flex-end;">
+        <a class="btn" href="tel:+19177159244">Call Otto</a>
+        <a class="btn secondary" href="tel:+12014074632">Call Mark</a>
+        <button class="btn" style="background:#444;color:#fff" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS: snow, stars, modal, small interactions -->
+  <script>
+    /* -------------------------
+       Create stars randomly
+       ------------------------- */
+    (function makeStars(){
+      const layer = document.getElementById('stars-layer');
+      const count = 24;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      for(let i=0;i<count;i++){
+        const s = document.createElement('div');
+        s.className = 'star';
+        const left = Math.random()*100;
+        const top = Math.random()*55;
+        const size = Math.random()*2 + 1;
+        s.style.left = left + '%';
+        s.style.top = top + '%';
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.animationDuration = (3 + Math.random()*5) + 's';
+        layer.appendChild(s);
+      }
+    })();
+
+    /* -------------------------
+       Create falling snow
+       ------------------------- */
+    (function makeSnow(){
+      const layer = document.getElementById('snow-layer');
+      const count = 26;
+      for(let i=0;i<count;i++){
+        const s = document.createElement('div');
+        s.className = 'snow';
+        const left = Math.random()*100;
+        const delay = Math.random()*-20;
+        const dur = 8 + Math.random()*12;
+        const size = 2 + Math.random()*6;
+        s.style.left = left + '%';
+        s.style.top = (Math.random()*-60) + '%';
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.opacity = 0.6 + Math.random()*0.4;
+        s.style.animationDelay = delay + 's';
+        s.style.animationDuration = dur + 's';
+        layer.appendChild(s);
+      }
+    })();
+
+    /* -------------------------
+       Modal open/close & quick content
+       ------------------------- */
+    const modal = document.getElementById('modal');
+    function openQuick(e, service){
+      if(e) e.preventDefault();
+      const body = document.getElementById('modal-body');
+      let text = '';
+      if(service === 'Snow Shoveling' || service === 'snow'){
+        text = 'Snow Shoveling — $25. Clears driveway and walkways where safe. Add salting for $10 to improve traction and reduce re-freeze.';
+      } else if(service === 'Salting' || service === 'salt'){
+        text = 'Salting — $10 (add-on). Applied to walkways and high-traffic areas during a visit.';
+      } else if(service === 'Leaf Raking' || service === 'rake'){
+        text = 'Leaf Raking — $25. Yard cleanup & bagging; curbside-ready disposal if available.';
+      } else {
+        text = 'Contact Otto or Mark to learn more and schedule.';
+      }
+      document.getElementById('modal-title').innerText = service;
+      body.innerText = text;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    /* -------------------------
+       Smooth scroll for hash links
+       ------------------------- */
+    (function smoothHash(){
+      if(location.hash){
+        const id = location.hash.slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      // intercept clicks to pricing anchor
+      document.querySelectorAll('a[href="#pricing"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          document.getElementById('pricing').scrollIntoView({behavior:'smooth', block:'center'});
+        });
+      });
+    })();
+
+    /* Accessibility: escape key to close modal */
+    document.addEventListener('keydown', (ev)=>{
+      if(ev.key === 'Escape') closeModal();
+    });
+
+    /* Small: clicking a service with dataset opens modal properly */
+    document.querySelectorAll('.service').forEach(s=>{
+      s.addEventListener('click', function(e){
+        const svc = this.dataset.service;
+        if(svc === 'snow') openQuick(e,'Snow Shoveling');
+        if(svc === 'salt') openQuick(e,'Salting');
+        if(svc === 'rake') openQuick(e,'Leaf Raking');
+      });
+    });
+
+  </script>
 </body>
 </html>
