@@ -9,15 +9,16 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f6f8;
+      background: linear-gradient(to bottom, #f9fafb, #e8f5e9);
       color: #333;
     }
 
     header {
-      background: #2c3e50;
+      background: #b71c1c; /* festive red */
       color: #fff;
       text-align: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
+      border-bottom: 5px solid #2e7d32; /* festive green */
     }
 
     header h1 {
@@ -32,13 +33,13 @@
 
     section {
       padding: 50px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      color: #2c3e50;
+      color: #2e7d32; /* festive green */
       margin-bottom: 30px;
     }
 
@@ -46,37 +47,40 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
     }
 
     .service {
-      background: #fff;
+      background: #fff3e0; /* light festive orange/gold */
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 240px;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .service:hover {
       transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     }
 
     .service h3 {
       margin-top: 0;
+      color: #b71c1c; /* festive red */
     }
 
     .service-details {
       display: none;
-      background: #fff;
+      background: #ffffff;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       max-width: 500px;
-      margin: 20px auto;
+      margin: 30px auto;
       text-align: center;
+      border: 3px solid #2e7d32; /* festive green border */
     }
 
     .service-details p {
@@ -85,27 +89,29 @@
     }
 
     .service-details button {
-      background: #2980b9;
+      background: #2e7d32; /* festive green */
       color: #fff;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 22px;
       font-size: 1em;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
+      transition: background 0.2s;
     }
 
     .service-details button:hover {
-      background: #1c5980;
+      background: #1b4d24;
     }
 
     .contact {
-      background: #ecf0f1;
-      padding: 30px 20px;
+      background: #c8e6c9; /* light festive green */
+      padding: 40px 20px;
       border-radius: 12px;
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       margin: 50px auto;
+      border: 3px solid #b71c1c; /* festive red border */
     }
 
     .contact p {
@@ -114,7 +120,7 @@
     }
 
     .contact a {
-      color: #2980b9;
+      color: #b71c1c; /* festive red links */
       text-decoration: none;
     }
 
@@ -132,7 +138,7 @@
   </header>
 
   <section>
-    <h2>Our Services</h2>
+    <h2>Our Festive Services</h2>
     <div class="services">
       <div class="service" onclick="showDetails('snow')">
         <h3>Snow Shoveling</h3>
