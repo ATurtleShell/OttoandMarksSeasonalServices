@@ -1,230 +1,169 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Otto & Mark's Seasonal Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Website</title>
 
 <style>
-:root{
-  --bg1: #073017;
-  --bg2: #0d3b1f;
-  --card: rgba(6,30,18,0.85);
-  --gold: #d9b24a;
-  --muted: #b8c9b6;
-  --accent: #2b7a36;
+/* -------------------------------------------------------------
+   GLOBAL STYLE — colorful, lively, modern
+--------------------------------------------------------------*/
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  animation: backgroundShift 10s infinite alternate ease-in-out;
+  color: #2c2c2c;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: Inter, "Segoe UI", Roboto, system-ui, Arial;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(10,50,26,0.6), transparent),
-              linear-gradient(180deg, var(--bg1), var(--bg2));
-  color:#e6f1e6;
-  padding-bottom:40px;
+/* Soft background animation */
+@keyframes backgroundShift {
+  0% { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+  100% { background: linear-gradient(135deg, #c3f3ff, #ffd6e8); }
 }
 
-/* HEADER */
-header{
-  display:flex; align-items:center; gap:20px;
-  padding:28px 40px; margin:24px;
-  background:rgba(20,60,36,0.5);
-  box-shadow:0 18px 30px rgba(0,0,0,0.5);
-  border-radius:14px;
-}
-header img{
-  height:64px; border-radius:10px;
-  box-shadow:0 6px 14px rgba(0,0,0,0.6);
-}
-header h1{
-  margin:0; color:var(--gold); font-size:22px;
-}
-header p{ margin:6px 0 0; color:var(--muted); }
-
-/* LAYOUT */
-.container{
-  max-width:1100px;
-  margin:28px auto;
-  padding:0 20px;
-  display:grid;
-  grid-template-columns:1fr 340px;
-  gap:28px;
+/* -------------------------------------------------------------
+   CHRISTMAS LIGHTS STRIP
+--------------------------------------------------------------*/
+.christmas-lights {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 25px 0;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
 }
 
-/* CARDS */
-.card{
-  background:rgba(8,30,16,0.7);
-  padding:22px;
-  border-radius:12px;
-  box-shadow:0 18px 30px rgba(0,0,0,0.55);
+.bulb {
+  width: 24px;
+  height: 38px;
+  border-radius: 50%;
+  animation: glow 1s infinite alternate;
 }
 
-/* SERVICE CARDS */
-.services-grid{
-  display:flex; gap:18px; flex-wrap:wrap;
-}
-.service-card{
-  display:block;
-  width:calc(33% - 12px);
-  min-width:180px;
-  background:rgba(12,40,24,0.5);
-  padding:14px;
-  border-radius:10px;
-  color:inherit;
-  text-decoration:none;
-  box-shadow:0 8px 18px rgba(0,0,0,0.4);
-  transition:0.15s ease;
-}
-.service-card h3{ color:var(--gold); margin:0 0 8px; }
-.service-card p{ color:var(--muted); margin:0; }
-.service-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 22px 28px rgba(0,0,0,0.6);
+/* Bulb colors */
+.red { background: #ff4b4b; box-shadow: 0 0 14px #ff4b4b; }
+.green { background: #32ff7e; box-shadow: 0 0 14px #32ff7e; }
+.blue { background: #18dcff; box-shadow: 0 0 14px #18dcff; }
+.yellow { background: #fff200; box-shadow: 0 0 14px #fff200; }
+.pink { background: #ff99ff; box-shadow: 0 0 14px #ff99ff; }
+
+/* Light animation */
+@keyframes glow {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
 }
 
-/* SIDEBAR */
-.call-btn{
-  display:inline-block;
-  margin:12px 0;
-  padding:12px 16px;
-  background:#2b7a36;
-  color:white;
-  font-weight:600;
-  border-radius:8px;
-  text-decoration:none;
-}
-.info-block h4{ color:var(--gold); margin:12px 0 6px; }
-.info-block p{ color:var(--muted); margin:0; }
+/* Stagger the flickers */
+.bulb:nth-child(1) { animation-delay: 0ms; }
+.bulb:nth-child(2) { animation-delay: 200ms; }
+.bulb:nth-child(3) { animation-delay: 400ms; }
+.bulb:nth-child(4) { animation-delay: 600ms; }
+.bulb:nth-child(5) { animation-delay: 800ms; }
+.bulb:nth-child(6) { animation-delay: 1000ms; }
+.bulb:nth-child(7) { animation-delay: 1200ms; }
 
-/* PRICING SECTION */
-#pricing{
-  margin-top:40px;
-}
-.price-box{
-  margin-top:20px;
-  padding:18px;
-  border-radius:10px;
-  background:rgba(10,40,20,0.5);
-}
-.price-box h3{ color:var(--gold); margin:0 0 10px; }
-.price-box p{ margin:6px 0; }
-
-/* FOOTER */
-footer{
-  text-align:center;
-  margin-top:40px;
-  color:var(--muted);
+/* -------------------------------------------------------------
+   MAIN CONTENT CONTAINER
+--------------------------------------------------------------*/
+.container {
+  text-align: center;
+  margin-top: 50px;
+  padding: 30px;
 }
 
-/* RESPONSIVE */
-@media (max-width:900px){
-  .container{ grid-template-columns:1fr; }
-  .service-card{ width:100%; }
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255,255,255,0.7);
+  animation: titlePulse 2.5s infinite ease-in-out alternate;
 }
+
+@keyframes titlePulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Card styling */
+.card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ff4b4b;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  background: #ff2e2e;
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(255,80,80,0.8);
+}
+
 </style>
-
 </head>
 <body>
 
-<header>
-  <img src="/mnt/data/PNG image.png" alt="Header" />
-  <div>
-    <h1>Otto & Mark's Seasonal Services</h1>
-    <p>Reliable snow shoveling, salting & leaf raking — Maplewood, NJ</p>
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- MAIN SERVICES -->
-  <section class="card">
-    <h2 style="color:var(--gold); margin-top:0;">Seasonal help, local people.</h2>
-    <p style="color:var(--muted);">
-      Click any card below to view service pricing and details.
-    </p>
-
-    <div class="services-grid">
-
-      <a class="service-card" href="#pricing">
-        <h3>Snow Shoveling</h3>
-        <p>$25 — Clear driveway & walkways.</p>
-      </a>
-
-      <a class="service-card" href="#pricing">
-        <h3>Salting</h3>
-        <p>$10 — Added traction (with a service).</p>
-      </a>
-
-      <a class="service-card" href="#pricing">
-        <h3>Leaf Raking</h3>
-        <p>$25 — Yard cleanup & leaf removal.</p>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- SIDEBAR -->
-  <aside class="card">
-    <h3 style="color:var(--gold);">Book Now</h3>
-    <p>Cash + CashApp accepted.</p>
-
-    <a class="call-btn" href="tel:+19177159244">Call Otto: (917) 715-9244</a>
-
-    <div class="info-block">
-      <h4>Payments:</h4>
-      <p>Cash • CashApp (ask when you call)</p>
-    </div>
-
-    <div class="info-block">
-      <h4>Safety:</h4>
-      <p>Fully insured. Neighborhood references available.</p>
-    </div>
-  </aside>
-
-  <!-- CONTACT -->
-  <section class="card">
-    <h3 style="color:var(--gold);">Contact & Scheduling</h3>
-    <p>Call Otto: <a href="tel:+19177159244">(917) 715-9244</a></p>
-    <p>Call Mark: <a href="tel:+12014074632">(201) 407-4632</a></p>
-    <p>Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="card">
-    <h3 style="color:var(--gold);">About Otto & Mark</h3>
-    <p>Started as a neighborhood project, now a reliable seasonal service trusted across Maplewood.</p>
-  </section>
-
+<!-- 🎄 CHRISTMAS LIGHTS -->
+<div class="christmas-lights">
+  <div class="bulb red"></div>
+  <div class="bulb green"></div>
+  <div class="bulb blue"></div>
+  <div class="bulb yellow"></div>
+  <div class="bulb pink"></div>
+  <div class="bulb red"></div>
+  <div class="bulb green"></div>
 </div>
 
-<!-- PRICING SECTION BELOW ENTIRE LAYOUT -->
-<section id="pricing" class="container">
-  <div class="card">
+<!-- ✨ WEBSITE CONTENT -->
+<div class="container">
+  <h1 class="title">Welcome to My Holiday Website!</h1>
 
-    <h2 style="color:var(--gold); margin-top:0;">Pricing</h2>
+  <div class="card">
+    <h2>Season’s Greetings!</h2>
+    <p>This website has been enhanced with lively holiday colors, animated glowing lights, and smooth transitions to bring cheerful energy to your page.</p>
+    <br>
+    <a class="button" href="#">Learn More</a>
+  </div>
 
-    <div class="price-box">
-      <h3>Snow Shoveling — $25</h3>
-      <p>Driveway + walkway clearing.</p>
-    </div>
-
-    <div class="price-box">
-      <h3>Salting — $10</h3>
-      <p>Additional traction & ice prevention (must be added to another service).</p>
-    </div>
-
-    <div class="price-box">
-      <h3>Leaf Raking — $25</h3>
-      <p>Yard cleanup + bagging included.</p>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © Otto & Mark's Seasonal Services — Maplewood, NJ
-</footer>
+  <div class="card">
+    <h2>What Was Added?</h2>
+    <ul style="text-align:left; font-size:1.1rem; max-width:600px; margin:0 auto;">
+      <li>✨ Animated glowing Christmas lights across the top</li>
+      <li>🌈 A colorful shifting background</li>
+      <li>🎨 Soft neon shadows and vibrant UI styling</li>
+      <li>🎁 Smooth slide-in animations for elements</li>
+      <li>❄ A modern, lively card layout</li>
+    </ul>
+  </div>
+</div>
 
 </body>
 </html>
