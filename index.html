@@ -5,300 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Otto & Mark's Seasonal Services</title>
   <style>
-    :root{
-      --green-900: #052a12;
-      --green-800: #0b3d1f;
-      --green-700: #135a2e;
-      --accent: #d4c56a;
-      --card: rgba(255,255,255,0.06);
-      --glass: rgba(255,255,255,0.06);
-      --muted: rgba(255,255,255,0.85);
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f0f4f0, #ffffff);
+      color: #333;
     }
 
-    /* Reset */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      color:var(--muted);
-      background: radial-gradient(circle at 10% 10%, rgba(19,90,46,0.5), transparent 10%),
-                  linear-gradient(180deg, var(--green-900) 0%, var(--green-800) 40%, var(--green-700) 100%);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding-bottom:60px;
+    header {
+      background: #b71c1c; /* festive red */
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 5px solid #2e7d32; /* festive green */
     }
 
-    /* Header */
-    header{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      max-width:1100px;
-      margin:30px auto;
-      padding:18px 24px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.04);
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
     }
 
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .logo img{height:72px; width:auto; border-radius:10px; object-fit:contain;}
-    header .title{
-      line-height:1;
-    }
-    header h1{margin:0; font-size:1.6rem; color:#fff;}
-    header p{margin:2px 0 0 0; color:rgba(255,255,255,0.8);}
-
-    /* Main card */
-    .container{max-width:1100px; margin:30px auto; padding:20px;}
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:28px;
-      align-items:start;\      margin-bottom:28px;
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
     }
 
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border-radius:12px;
-      padding:22px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.04);
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .intro h2{color:var(--accent); margin:0 0 8px 0; font-size:1.6rem}
-    .intro p{color:rgba(255,255,255,0.9); margin:0 0 18px 0}
-
-    .services{display:flex; flex-wrap:wrap; gap:18px}
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px; padding:16px; width:220px; cursor:pointer;
-      transition:transform .25s ease, box-shadow .25s ease;
-      border:1px solid rgba(255,255,255,0.03);
+    h2 {
+      text-align: center;
+      color: #2e7d32; /* festive green */
+      margin-bottom: 30px;
     }
-    .card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.5)}
-    .card h3{margin:0 0 8px 0; color:var(--accent)}
-    .card p{margin:0; color:rgba(255,255,255,0.85)}
 
-    /* Right column */
-    .booking{
-      display:flex; flex-direction:column; gap:12px;
+    .about {
+      text-align: center;
+      background: #e8f5e9; /* light green */
+      padding: 30px 20px;
+      border-radius: 12px;
+      margin-bottom: 50px;
+      border: 3px solid #b71c1c; /* red border */
     }
-    .booking .cta{background:linear-gradient(90deg,#1b5e20,#2e7d32); padding:14px; text-align:center; border-radius:10px; color:white; font-weight:600; cursor:pointer}
 
-    /* Modal / details */
-    .modal-backdrop{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)); backdrop-filter: blur(4px); z-index:200;}
-    .modal{width:min(720px,90%); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:26px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); box-shadow:0 30px 60px rgba(0,0,0,0.6)}
-    .modal h3{margin-top:0; color:var(--accent)}
-    .modal .meta{display:flex; gap:12px; flex-wrap:wrap; margin:12px 0}
-    .btn{background:var(--accent); color:#052a12; padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700}
-    .close-btn{background:transparent; color:rgba(255,255,255,0.9); border:1px solid rgba(255,255,255,0.06)}
+    .about p {
+      font-size: 1.1em;
+      color: #2e7d32;
+    }
 
-    /* Contact box */
-    .contact{margin-top:22px; display:flex; gap:12px; flex-direction:column}
-    .contact a{color:var(--accent); text-decoration:none; font-weight:600}
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
 
-    footer{max-width:1100px; margin:28px auto; color:rgba(255,255,255,0.65); text-align:center}
+    .service {
+      background: #fff3e0; /* light festive orange/gold */
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 240px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .logo img{height:56px}
-      .card{width:100%}
+    .service img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    .service:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .service h3 {
+      margin-top: 0;
+      color: #b71c1c; /* festive red */
+    }
+
+    .service-details {
+      display: none;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 500px;
+      margin: 30px auto;
+      text-align: center;
+      border: 3px solid #2e7d32; /* festive green border */
+    }
+
+    .service-details p {
+      font-size: 1.1em;
+      margin: 15px 0;
+    }
+
+    .service-details button {
+      background: #2e7d32; /* festive green */
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+
+    .service-details button:hover {
+      background: #1b4d24;
+    }
+
+    .contact {
+      background: #c8e6c9; /* light festive green */
+      padding: 40px 20px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 900px;
+      margin: 50px auto;
+      border: 3px solid #b71c1c; /* festive red border */
+    }
+
+    .contact p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .contact a {
+      color: #b71c1c; /* festive red links */
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">
-      <!-- Using the uploaded logo from the workspace -->
-      
-    </div>
-    <div class="title">
-      <h1>Otto & Mark's Seasonal Services</h1>
-      <p>Reliable snow shoveling, salting & leaf raking — Maplewood, NJ</p>
-    </div>
+    <h1>Otto & Mark's Seasonal Services</h1>
+    <p>Leaf Raking, Snow Shoveling, and Salting in Maplewood, NJ</p>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="panel intro">
-        <h2>Seasonal help, local people.</h2>
-        <p>Fast, friendly, and affordable seasonal services to keep your home safe and tidy. Click any service card to see pricing, payment options, and details.</p>
+  <section class="about">
+    <h2>About Us</h2>
+    <p>We make your yard safe and beautiful every season! From clearing snow to raking leaves, we bring holiday cheer to every home in Maplewood.</p>
+  </section>
 
-        <div class="services" role="list">
-          <div class="card" role="listitem" tabindex="0" data-service="snow">
-            <h3>Snow Shoveling</h3>
-            <p>Keep your driveway and walkways clear. <strong>$25</strong></p>
-          </div>
-
-          <div class="card" role="listitem" tabindex="0" data-service="salting">
-            <h3>Salting</h3>
-            <p>Added traction & ice prevention. <strong>$10 (with a service)</strong></p>
-          </div>
-
-          <div class="card" role="listitem" tabindex="0" data-service="raking">
-            <h3>Leaf Raking</h3>
-            <p>Fall yard cleanup and leaf removal. <strong>$25</strong></p>
-          </div>
-        </div>
-
-        <div class="contact panel" aria-label="Contact">
-          <h4 style="color:var(--accent); margin:0 0 6px 0;">Contact & Scheduling</h4>
-          <p style="margin:0">Call Otto: <a href="tel:9177159244">(917) 715-9244</a></p>
-          <p style="margin:0">Call Mark: <a href="tel:+12014074632">(201) 407-4632</a></p>
-          <p style="margin:0">Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
-          <p style="margin:8px 0 0 0; color:rgba(255,255,255,0.85)">Serving Maplewood, NJ and surrounding areas.</p>
-        </div>
-
+  <section>
+    <h2>Our Festive Services</h2>
+    <div class="services">
+      <div class="service" onclick="showDetails('snow')">
+        <img src="https://cdn-icons-png.flaticon.com/128/642/642054.png" alt="Snow Shoveling">
+        <h3>Snow Shoveling</h3>
+        <p>Keep your driveway clear! $25</p>
       </div>
-
-      <aside class="panel booking">
-        <div style="text-align:center">
-          <h3 style="color:var(--accent); margin:0 0 6px 0">Book Now</h3>
-          <p style="margin:0 0 12px 0">Quick scheduling and reliable arrival — cash and CashApp accepted.</p>
-          <div class="cta" id="bookNow">Call to Schedule: (917) 715-9244</div>
-        </div>
-
-        <div style="padding:12px; border-radius:10px; border:1px dashed rgba(255,255,255,0.04)">
-          <strong style="color:var(--accent)">Payments:</strong>
-          <p style="margin:8px 0 0 0">Cash accepted. CashApp: <em>ask when you call</em>.</p>
-        </div>
-
-        <div style="padding:12px; border-radius:10px; border:1px dashed rgba(255,255,255,0.04)">
-          <strong style="color:var(--accent)">Safety:</strong>
-          <p style="margin:8px 0 0 0">Fully insured for basic yard work. Prompt, neighborhood references available.</p>
-        </div>
-      </aside>
-    </section>
-
-    <section class="panel">
-      <h3 style="margin-top:0; color:var(--accent)">About Otto & Mark</h3>
-      <p style="margin:0">Otto & Mark’s Seasonal Services began as a friendly neighborhood project and quickly grew into a reliable local service trusted across Maplewood. What started with two friends helping out on snowy mornings and leaf-filled afternoons has become a dedicated, community‑focused service where reliability, friendliness, and fair pricing always come first.<br><br>
-      We’re committed to making each season easier for our neighbors—whether that means clearing snow before work, adding salting before an overnight freeze, or getting lawns clean and leaf‑free in the fall. We believe in good communication, honest work, and showing up when you need us. When you book with us, you’re supporting a local team that truly cares about keeping Maplewood safe, tidy, and running smoothly all year long.</p>
-    </section>
-
-  </main>
-
-  <footer>
-    <small>&copy; Otto & Mark's Seasonal Services — Maplewood, NJ • <a href="mailto:hubschmannotto@gmail.com" style="color:rgba(255,255,255,0.9)">Contact</a></small>
-  </footer>
-
-  <!-- Templates for modals (kept in DOM for accessibility) -->
-  <template id="tmpl-snow">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
-      <h3 id="m-title">Snow Shoveling</h3>
-      <div class="meta"><strong>Price:</strong><span>$25</span></div>
-      <p>We clear driveways and walkways. Service typically completed within 24 hours of request depending on conditions. Recommended to pair with salting during freezing temperatures.</p>
-      <p><strong>Payment:</strong> Cash or CashApp</p>
-      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px">
-        <button class="btn" id="book-snow">Call to Book</button>
-        <button class="btn close-btn" data-close>Close</button>
+      <div class="service" onclick="showDetails('salting')">
+        <img src="https://cdn-icons-png.flaticon.com/128/616/616408.png" alt="Salting">
+        <h3>Salting</h3>
+        <p>Add salt to prevent ice. $10 extra</p>
+      </div>
+      <div class="service" onclick="showDetails('raking')">
+        <img src="https://cdn-icons-png.flaticon.com/128/616/616420.png" alt="Leaf Raking">
+        <h3>Leaf Raking</h3>
+        <p>Yard cleanup in the fall. $25</p>
       </div>
     </div>
-  </template>
 
-  <template id="tmpl-salting">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
-      <h3 id="m-title">Salting</h3>
-      <div class="meta"><strong>Price:</strong><span>$10 (when added to service)</span></div>
-      <p>Prevent ice buildup and improve traction. Best when applied immediately after snow removal or before a freeze.</p>
-      <p><strong>Payment:</strong> Cash or CashApp</p>
-      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px">
-        <button class="btn" id="book-salt">Call to Book</button>
-        <button class="btn close-btn" data-close>Close</button>
-      </div>
+    <!-- Service Details Sections -->
+    <div id="snow" class="service-details">
+      <h3>Snow Shoveling</h3>
+      <p>Price: $25</p>
+      <p>Payment accepted: Cash or CashApp</p>
+      <button onclick="hideDetails('snow')">Close</button>
     </div>
-  </template>
 
-  <template id="tmpl-raking">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
-      <h3 id="m-title">Leaf Raking</h3>
-      <div class="meta"><strong>Price:</strong><span>$25</span></div>
-      <p>Complete yard leaf removal. We rake, bag, and (upon request) haul away leaves. Great for preparing lawns for winter.</p>
-      <p><strong>Payment:</strong> Cash or CashApp</p>
-      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px">
-        <button class="btn" id="book-rake">Call to Book</button>
-        <button class="btn close-btn" data-close>Close</button>
-      </div>
+    <div id="salting" class="service-details">
+      <h3>Salting</h3>
+      <p>Price: $10 additional to a previous order</p>
+      <p>Payment accepted: Cash or CashApp</p>
+      <button onclick="hideDetails('salting')">Close</button>
     </div>
-  </template>
+
+    <div id="raking" class="service-details">
+      <h3>Leaf Raking</h3>
+      <p>Price: $25</p>
+      <p>Payment accepted: Cash or CashApp</p>
+      <button onclick="hideDetails('raking')">Close</button>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Call Otto: <a href="tel:9177159244">917-715-9244</a></p>
+    <p>Call Mark: <a href="tel:2014074632">(201) 407-4632</a></p>
+    <p>Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
+    <p>Serving Maplewood, NJ and surrounding areas</p>
+  </section>
 
   <script>
-    // Open modal logic
-    const cards = document.querySelectorAll('.card');
-    const tmplSnow = document.getElementById('tmpl-snow');
-    const tmplSalt = document.getElementById('tmpl-salting');
-    const tmplRake = document.getElementById('tmpl-raking');
-
-    function makeBackdrop(modalEl){
-      const back = document.createElement('div'); back.className='modal-backdrop';
-      back.tabIndex = -1;
-      back.appendChild(modalEl);
-      back.addEventListener('click', (e)=>{ if(e.target === back) closeBackdrop(back); });
-      document.body.appendChild(back);
-      // trap focus roughly
-      const focusable = back.querySelectorAll('button, [tabindex]');
-      if(focusable.length) focusable[0].focus();
-      document.addEventListener('keydown', escClose);
-      return back;
+    function showDetails(id) {
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo({ top: document.getElementById(id).offsetTop - 20, behavior: 'smooth' });
     }
 
-    function closeBackdrop(back){
-      if(!back) return;
-      document.removeEventListener('keydown', escClose);
-      back.remove();
+    function hideDetails(id) {
+      document.getElementById(id).style.display = 'none';
     }
-
-    function escClose(e){ if(e.key === 'Escape'){
-      const b = document.querySelector('.modal-backdrop'); if(b) closeBackdrop(b);
-    }}
-
-    document.addEventListener('click', (e)=>{
-      const card = e.target.closest('.card');
-      if(card){
-        const key = card.dataset.service;
-        openService(key);
-      }
-
-      if(e.target.matches('[data-close]')){
-        const back = e.target.closest('.modal-backdrop'); closeBackdrop(back);
-      }
-
-      if(e.target.id === 'bookNow' || e.target.id.startsWith('book-')){
-        // trigger phone link
-        window.location.href = 'tel:9177159244';
-      }
-    });
-
-    // keyboard support
-    cards.forEach(c=> c.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') openService(c.dataset.service); }));
-
-    function openService(key){
-      // close existing
-      const existing = document.querySelector('.modal-backdrop'); if(existing) existing.remove();
-
-      let clone;
-      if(key === 'snow') clone = tmplSnow.content.cloneNode(true);
-      if(key === 'salting') clone = tmplSalt.content.cloneNode(true);
-      if(key === 'raking') clone = tmplRake.content.cloneNode(true);
-
-      if(!clone) return;
-      const modalEl = clone.querySelector('.modal');
-      const back = makeBackdrop(modalEl);
-
-      // attach book buttons to call
-      back.querySelectorAll('[id^="book"]').forEach(btn=> btn.addEventListener('click', ()=> window.location.href='tel:9177159244'));
-    }
-
-    // make cards keyboard-focusable and accessible
-    document.querySelectorAll('.card').forEach(c=>{ c.setAttribute('role','button'); c.setAttribute('aria-pressed','false'); });
   </script>
+
 </body>
 </html>
