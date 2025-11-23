@@ -1,225 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Otto & Mark's Seasonal Services</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #f0f4f0, #ffffff);
-      color: #333;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Otto & Mark's Seasonal Services</title>
 
-    header {
-      background: #b71c1c; /* festive red */
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      border-bottom: 5px solid #2e7d32; /* festive green */
-    }
+<style>
+:root{
+  --bg1: #073017;
+  --bg2: #0d3b1f;
+  --card: rgba(6,30,18,0.85);
+  --gold: #d9b24a;
+  --muted: #b8c9b6;
+  --accent: #2b7a36;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, "Segoe UI", Roboto, system-ui, Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(10,50,26,0.6), transparent),
+              linear-gradient(180deg, var(--bg1), var(--bg2));
+  color:#e6f1e6;
+  padding-bottom:40px;
+}
 
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
+/* HEADER */
+header{
+  display:flex; align-items:center; gap:20px;
+  padding:28px 40px; margin:24px;
+  background:rgba(20,60,36,0.5);
+  box-shadow:0 18px 30px rgba(0,0,0,0.5);
+  border-radius:14px;
+}
+header img{
+  height:64px; border-radius:10px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.6);
+}
+header h1{
+  margin:0; color:var(--gold); font-size:22px;
+}
+header p{ margin:6px 0 0; color:var(--muted); }
 
-    section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+/* LAYOUT */
+.container{
+  max-width:1100px;
+  margin:28px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:28px;
+}
 
-    h2 {
-      text-align: center;
-      color: #2e7d32; /* festive green */
-      margin-bottom: 30px;
-    }
+/* CARDS */
+.card{
+  background:rgba(8,30,16,0.7);
+  padding:22px;
+  border-radius:12px;
+  box-shadow:0 18px 30px rgba(0,0,0,0.55);
+}
 
-    .about {
-      text-align: center;
-      background: #e8f5e9; /* light green */
-      padding: 30px 20px;
-      border-radius: 12px;
-      margin-bottom: 50px;
-      border: 3px solid #b71c1c; /* red border */
-    }
+/* SERVICE CARDS */
+.services-grid{
+  display:flex; gap:18px; flex-wrap:wrap;
+}
+.service-card{
+  display:block;
+  width:calc(33% - 12px);
+  min-width:180px;
+  background:rgba(12,40,24,0.5);
+  padding:14px;
+  border-radius:10px;
+  color:inherit;
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(0,0,0,0.4);
+  transition:0.15s ease;
+}
+.service-card h3{ color:var(--gold); margin:0 0 8px; }
+.service-card p{ color:var(--muted); margin:0; }
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 28px rgba(0,0,0,0.6);
+}
 
-    .about p {
-      font-size: 1.1em;
-      color: #2e7d32;
-    }
+/* SIDEBAR */
+.call-btn{
+  display:inline-block;
+  margin:12px 0;
+  padding:12px 16px;
+  background:#2b7a36;
+  color:white;
+  font-weight:600;
+  border-radius:8px;
+  text-decoration:none;
+}
+.info-block h4{ color:var(--gold); margin:12px 0 6px; }
+.info-block p{ color:var(--muted); margin:0; }
 
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-    }
+/* PRICING SECTION */
+#pricing{
+  margin-top:40px;
+}
+.price-box{
+  margin-top:20px;
+  padding:18px;
+  border-radius:10px;
+  background:rgba(10,40,20,0.5);
+}
+.price-box h3{ color:var(--gold); margin:0 0 10px; }
+.price-box p{ margin:6px 0; }
 
-    .service {
-      background: #fff3e0; /* light festive orange/gold */
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 240px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+/* FOOTER */
+footer{
+  text-align:center;
+  margin-top:40px;
+  color:var(--muted);
+}
 
-    .service:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    }
+/* RESPONSIVE */
+@media (max-width:900px){
+  .container{ grid-template-columns:1fr; }
+  .service-card{ width:100%; }
+}
+</style>
 
-    .service h3 {
-      margin-top: 0;
-      color: #b71c1c; /* festive red */
-    }
-
-    .service-details {
-      display: none;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      max-width: 500px;
-      margin: 30px auto;
-      text-align: center;
-      border: 3px solid #2e7d32; /* festive green border */
-    }
-
-    .service-details p {
-      font-size: 1.1em;
-      margin: 15px 0;
-    }
-
-    .service-details button {
-      background: #2e7d32; /* festive green */
-      color: #fff;
-      border: none;
-      padding: 12px 22px;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.2s;
-    }
-
-    .service-details button:hover {
-      background: #1b4d24;
-    }
-
-    .contact {
-      background: #c8e6c9; /* light festive green */
-      padding: 40px 20px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 900px;
-      margin: 50px auto;
-      border: 3px solid #b71c1c; /* festive red border */
-    }
-
-    .contact p {
-      font-size: 1.1em;
-      margin: 10px 0;
-    }
-
-    .contact a {
-      color: #b71c1c; /* festive red links */
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .services {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Otto & Mark's Seasonal Services</h1>
-    <p>Leaf Raking, Snow Shoveling, and Salting in Maplewood, NJ</p>
-  </header>
+<header>
+  <img src="/mnt/data/PNG image.png" alt="Header" />
+  <div>
+    <h1>Otto & Mark's Seasonal Services</h1>
+    <p>Reliable snow shoveling, salting & leaf raking — Maplewood, NJ</p>
+  </div>
+</header>
 
-  <section class="about">
-    <h2>About Us</h2>
-    <p>We make your yard safe and beautiful every season! From clearing snow to raking leaves, we bring holiday cheer to every home in Maplewood.</p>
-  </section>
+<div class="container">
 
-  <section>
-    <h2>Our Festive Services</h2>
-    <div class="services">
-      <div class="service" onclick="showDetails('snow')">
-        <h3>Snow Shoveling</h3>
-        <p>Keep your driveway clear! $25</p>
-      </div>
-      <div class="service" onclick="showDetails('salting')">
-        <h3>Salting</h3>
-        <p>Add salt to prevent ice. $10 extra</p>
-      </div>
-      <div class="service" onclick="showDetails('raking')">
-        <h3>Leaf Raking</h3>
-        <p>Yard cleanup in the fall. $25</p>
-      </div>
-    </div>
+  <!-- MAIN SERVICES -->
+  <section class="card">
+    <h2 style="color:var(--gold); margin-top:0;">Seasonal help, local people.</h2>
+    <p style="color:var(--muted);">
+      Click any card below to view service pricing and details.
+    </p>
 
-    <!-- Service Details Sections -->
-    <div id="snow" class="service-details">
-      <h3>Snow Shoveling</h3>
-      <p>Price: $25</p>
-      <p>Payment accepted: Cash or CashApp</p>
-      <button onclick="hideDetails('snow')">Close</button>
-    </div>
+    <div class="services-grid">
 
-    <div id="salting" class="service-details">
-      <h3>Salting</h3>
-      <p>Price: $10 additional to a previous order</p>
-      <p>Payment accepted: Cash or CashApp</p>
-      <button onclick="hideDetails('salting')">Close</button>
-    </div>
+      <a class="service-card" href="#pricing">
+        <h3>Snow Shoveling</h3>
+        <p>$25 — Clear driveway & walkways.</p>
+      </a>
 
-    <div id="raking" class="service-details">
-      <h3>Leaf Raking</h3>
-      <p>Price: $25</p>
-      <p>Payment accepted: Cash or CashApp</p>
-      <button onclick="hideDetails('raking')">Close</button>
-    </div>
-  </section>
+      <a class="service-card" href="#pricing">
+        <h3>Salting</h3>
+        <p>$10 — Added traction (with a service).</p>
+      </a>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>Call Otto: <a href="tel:9177159244">917-715-9244</a></p>
-    <p>Call Mark: <a href="tel:2014074632">(201) 407-4632</a></p>
-    <p>Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
-    <p>Serving Maplewood, NJ and surrounding areas</p>
-  </section>
+      <a class="service-card" href="#pricing">
+        <h3>Leaf Raking</h3>
+        <p>$25 — Yard cleanup & leaf removal.</p>
+      </a>
 
-  <script>
-    function showDetails(id) {
-      document.getElementById(id).style.display = 'block';
-      window.scrollTo({ top: document.getElementById(id).offsetTop - 20, behavior: 'smooth' });
-    }
+    </div>
+  </section>
 
-    function hideDetails(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-  </script>
+  <!-- SIDEBAR -->
+  <aside class="card">
+    <h3 style="color:var(--gold);">Book Now</h3>
+    <p>Cash + CashApp accepted.</p>
+
+    <a class="call-btn" href="tel:+19177159244">Call Otto: (917) 715-9244</a>
+
+    <div class="info-block">
+      <h4>Payments:</h4>
+      <p>Cash • CashApp (ask when you call)</p>
+    </div>
+
+    <div class="info-block">
+      <h4>Safety:</h4>
+      <p>Fully insured. Neighborhood references available.</p>
+    </div>
+  </aside>
+
+  <!-- CONTACT -->
+  <section class="card">
+    <h3 style="color:var(--gold);">Contact & Scheduling</h3>
+    <p>Call Otto: <a href="tel:+19177159244">(917) 715-9244</a></p>
+    <p>Call Mark: <a href="tel:+12014074632">(201) 407-4632</a></p>
+    <p>Email: <a href="mailto:hubschmannotto@gmail.com">hubschmannotto@gmail.com</a></p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="card">
+    <h3 style="color:var(--gold);">About Otto & Mark</h3>
+    <p>Started as a neighborhood project, now a reliable seasonal service trusted across Maplewood.</p>
+  </section>
+
+</div>
+
+<!-- PRICING SECTION BELOW ENTIRE LAYOUT -->
+<section id="pricing" class="container">
+  <div class="card">
+
+    <h2 style="color:var(--gold); margin-top:0;">Pricing</h2>
+
+    <div class="price-box">
+      <h3>Snow Shoveling — $25</h3>
+      <p>Driveway + walkway clearing.</p>
+    </div>
+
+    <div class="price-box">
+      <h3>Salting — $10</h3>
+      <p>Additional traction & ice prevention (must be added to another service).</p>
+    </div>
+
+    <div class="price-box">
+      <h3>Leaf Raking — $25</h3>
+      <p>Yard cleanup + bagging included.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © Otto & Mark's Seasonal Services — Maplewood, NJ
+</footer>
 
 </body>
 </html>
