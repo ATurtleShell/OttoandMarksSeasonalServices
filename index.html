@@ -1,276 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Otto & Mark's Seasonal Services</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Otto & Mark's Seasonal Services</title>
 
-<style>
-    body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: #012d1e;
-        color: white;
-        overflow-x: hidden;
-    }
+    <!-- Nicer Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* NAVIGATION */
-    nav {
-        background: linear-gradient(to right, #0a521d, #a60000);
-        padding: 18px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0a2e0a;
+            color: #fff;
+        }
 
-    nav .logo {
-        font-size: 26px;
-        font-weight: 700;
-    }
+        /* Snowflakes */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 18px;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        gap: 28px;
-        margin: 0;
-    }
+        @keyframes fall {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(100vh); }
+        }
 
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(to right, #b30000, #0d660d);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
 
-    nav ul li a:hover {
-        opacity: 0.7;
-    }
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
 
-    /* HEADER / HERO */
-    header {
-        text-align: center;
-        padding: 70px 20px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 {
-        font-size: 48px;
-        color: #ffeded;
-        margin-bottom: 10px;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
 
-    h2 {
-        font-size: 22px;
-        color: #ffe3e3;
-        margin-top: 0;
-    }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-    .services {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        padding: 40px;
-    }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-    .card {
-        background: #024a2b;
-        padding: 22px;
-        width: 260px;
-        border-radius: 14px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        text-align: center;
-        border: 2px solid #ba0000;
-        transition: transform 0.3s;
-    }
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 40px;
+        }
 
-    .card:hover {
-        transform: scale(1.05);
-    }
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            width: 260px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #0d660d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
 
-    .card button {
-        margin-top: 15px;
-        padding: 10px;
-        background: #b30000;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: 0.3s;
-        width: 100%;
-    }
+        .card button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #b30000;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    .card button:hover {
-        background: #d40000;
-    }
+        .card button:hover {
+            background: #8d0000;
+        }
 
-    /* SECTIONS */
-    section {
-        padding: 50px 25px;
-        max-width: 900px;
-        margin: auto;
-        background: #03301c;
-        border-radius: 18px;
-        margin-top: 50px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-    }
+        footer {
+            background: #001a00;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
 
-    section h2 {
-        margin-top: 0;
-        font-size: 30px;
-        color: #ffdede;
-    }
-
-    /* FOOTER */
-    footer {
-        background: #001c12;
-        padding: 40px 30px;
-        text-align: center;
-        margin-top: 60px;
-        border-top: 3px solid #b30000;
-    }
-
-    footer h3 {
-        margin-top: 0;
-        font-size: 24px;
-        color: #ffcfcf;
-    }
-
-    footer p {
-        margin: 6px 0;
-        font-size: 16px;
-    }
-
-    /* SNOW ANIMATION */
-    .snowflake {
-        position: fixed;
-        top: -10px;
-        color: white;
-        font-size: 18px;
-        animation: fall linear infinite;
-        opacity: 0.9;
-        z-index: 50;
-        pointer-events: none;
-    }
-
-    @keyframes fall {
-        0% { transform: translateY(-10px); }
-        100% { transform: translateY(110vh); }
-    }
-</style>
+    </style>
 </head>
-
 <body>
 
-<!-- CHRISTMAS MUSIC -->
-<audio autoplay loop volume="0.2">
-    <source src="https://files.catbox.moe/9x4n1q.mp3" type="audio/mpeg">
-</audio>
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/12/15/audio_31a71f4b77.mp3?filename=jingle-bells-12241.mp3" type="audio/mpeg">
+    </audio>
 
-<!-- SNOW SCRIPT -->
-<script>
-function createSnowflake() {
-    const s = document.createElement("div");
-    s.classList.add("snowflake");
-    s.innerHTML = "❄";
-    s.style.left = Math.random() * 100 + "vw";
-    s.style.animationDuration = (3 + Math.random() * 6) + "s";
-    s.style.opacity = Math.random();
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 9000);
-}
-setInterval(createSnowflake, 200);
-</script>
+    <!-- Snowflakes Script -->
+    <script>
+        for (let i = 0; i < 40; i++) {
+            let snow = document.createElement('div');
+            snow.className = 'snowflake';
+            snow.textContent = '❄';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = 3 + Math.random() * 5 + 's';
+            snow.style.opacity = Math.random();
+            document.body.appendChild(snow);
+        }
+    </script>
 
-<!-- NAV BAR -->
-<nav>
-    <div class="logo">Otto & Mark's Seasonal Services</div>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#hours">Hours</a></li>
-    </ul>
-</nav>
+    <nav>
+        <div class="logo">Otto & Mark's Seasonal Services</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- MAIN -->
-<header id="home">
-    <h1>Seasonal Services in Maplewood, NJ</h1>
-    <h2>Snow Shoveling • Salting • Leaf Raking • Winter Bundles</h2>
-</header>
+    <header id="home">
+        <h1>Professional & Reliable Seasonal Services</h1>
+        <p>Serving Maplewood, NJ with pride.</p>
+    </header>
 
-<div class="services">
-    <div class="card">
-        <h3>Snow Shoveling</h3>
-        <p>$25 per driveway/sidewalk</p>
-        <button onclick="location.href='#packages'">View Pricing</button>
-    </div>
+    <section class="services" id="services">
+        <div class="card">
+            <h3>Snow Shoveling</h3>
+            <p>$25 per driveway</p>
+            <button onclick="alert('Snow Shoveling: $25')">More Info</button>
+        </div>
 
-    <div class="card">
-        <h3>Salting</h3>
-        <p>+ $10 add-on to snow service</p>
-        <button onclick="location.href='#packages'">View Pricing</button>
-    </div>
+        <div class="card">
+            <h3>Salting</h3>
+            <p>$10 add‑on</p>
+            <button onclick="alert('Salting: +$10 with any shoveling job')">More Info</button>
+        </div>
 
-    <div class="card">
-        <h3>Leaf Raking</h3>
-        <p>$25 per yard</p>
-        <button onclick="location.href='#packages'">View Pricing</button>
-    </div>
-</div>
+        <div class="card">
+            <h3>Leaf Raking</h3>
+            <p>$25 per yard</p>
+            <button onclick="alert('Raking: $25 per yard')">More Info</button>
+        </div>
+    </section>
 
-<!-- PACKAGES -->
-<section id="packages">
-    <h2>Winter Packages</h2>
-
-    <h3>❄ Basic Winter Package — $35</h3>
-    <p>• Snow Shoveling + Salting</p>
-
-    <h3>🎄 Seasonal Combo — $60</h3>
-    <p>• Snow Shoveling + Salting + Leaf Raking</p>
-
-    <h3>⛄ Heavy Storm Package — $45</h3>
-    <p>• Deep snow + walkway clearing + salting</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>We work anywhere in Maplewood, NJ.</p>
-
-    <p><strong>Phone (Otto):</strong> 917-715-9244</p>
-    <p><strong>Phone (Mark):</strong> 201-407-4632</p>
-    <p><strong>Email:</strong> hubschmannotto@gmail.com</p>
-
-    <p>Payment options: Cash or CashApp</p>
-</section>
-
-<!-- HOURS -->
-<section id="hours">
-    <h2>Service Hours</h2>
-
-    <h3>📘 School Season Hours</h3>
-    <p>Monday–Friday: **4:00 PM – 7:00 PM**</p>
-    <p>Saturday–Sunday: **10:00 AM – 6:00 PM**</p>
-    <p><em>(We work after school and on weekends.)</em></p>
-
-    <h3>🎉 Season Break / Holidays Hours</h3>
-    <p>Monday–Sunday: **9:00 AM – 7:00 PM**</p>
-    <p><em>(More availability during snowstorms.)</em></p>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <h3>Otto & Mark's Seasonal Services</h3>
-    <p>Maplewood, New Jersey</p>
-    <p>Reliable • Affordable • Local</p>
-    <p style="margin-top:10px; font-size:14px;">© 2025 All Rights Reserved</p>
-</footer>
+    <footer id="contact">
+        <p><strong>Contact Us:</strong></p>
+        <p>Otto: 917‑715‑9244<br>Mark: 201‑407‑4632</p>
+        <p>Email: hubschmannotto@gmail.com</p>
+        <br>
+        <p><strong>Business Hours:</strong></p>
+        <p>School Season: 3:30 PM – 7:00 PM</p>
+        <p>Breaks & Holidays: 10:00 AM – 6:00 PM</p>
+        <br>
+        <p>© 2025 Otto & Mark's Seasonal Services</p>
+    </footer>
 
 </body>
 </html>
