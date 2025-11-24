@@ -1,205 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Otto & Mark's Seasonal Services</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otto & Mark's Seasonal Services</title>
 
-<style>
+    <style>
+        /* GENERAL PAGE STYLE */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            overflow-x: hidden;
+        }
 
-/* ------------------------------
-     GLOBAL CHRISTMAS THEME
---------------------------------*/
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
-    background: linear-gradient(180deg, #0b2e0f, #0f4417, #165c20);
-    color: #ffffff;
-}
+        /* NAVIGATION BAR */
+        nav {
+            background: linear-gradient(to right, #b30000, #0d660d);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
 
-/* Center container */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
+        nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
 
-/* Title Style */
-h1 {
-    text-align: center;
-    font-size: 2.6rem;
-    color: #ffdf7f;
-    text-shadow: 0 0 8px #ff0000;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Section headers */
-h2 {
-    color: #ffdf7f;
-    border-left: 6px solid #ff0000;
-    padding-left: 10px;
-    margin-top: 40px;
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-/* Card style for sections */
-.card {
-    background: rgba(0, 0, 0, 0.45);
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
-    border: 2px solid #ff0000;
-    box-shadow: 0 0 12px #008000;
-}
+        nav ul li a:hover {
+            opacity: 0.7;
+        }
 
-/* Service links */
-.service-link {
-    display: block;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #7fffd4;
-    text-decoration: none;
-}
-.service-link:hover {
-    color: #ffdf7f;
-}
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 50px;
+            background: white;
+        }
 
-/* Contact area */
-.contact-box {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
+        header h1 {
+            font-size: 36px;
+            color: #b30000;
+            margin: 0;
+        }
 
-/* Buttons */
-.button {
-    background: #ff0000;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    display: inline-block;
-    margin: 10px 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.button:hover {
-    background: #ffdf7f;
-    color: #000;
-}
+        header p {
+            font-size: 18px;
+            color: #0d660d;
+        }
 
-/* ------------------------------
-     CHRISTMAS LIGHTS ANIMATION
---------------------------------*/
-.lights {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 18px 0;
-    background: #062408;
-    border-bottom: 4px solid #ff0000;
-}
+        /* SERVICES SECTION */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
 
-.bulb {
-    width: 22px;
-    height: 35px;
-    border-radius: 50%;
-    animation: glow 1.4s infinite alternate;
-}
+        .card {
+            background: white;
+            width: 260px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid #0d660d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
 
-.red { background: #ff5757; }
-.green { background: #00ff85; }
-.yellow { background: #fff252; }
-.blue { background: #57c4ff; }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
 
-@keyframes glow {
-    from { opacity: 0.4; transform: translateY(0px);}
-    to   { opacity: 1; transform: translateY(4px);}
-}
+        .card button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #b30000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
 
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding: 20px;
-    color: #ffdf7f;
-}
-</style>
+        .card button:hover {
+            background: #8f0000;
+        }
 
+        /* SNOW ANIMATION */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 18px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+    </style>
 </head>
 <body>
 
-<!-- TOP CHRISTMAS LIGHTS -->
-<div class="lights">
-    <div class="bulb red"></div>
-    <div class="bulb green"></div>
-    <div class="bulb yellow"></div>
-    <div class="bulb blue"></div>
-    <div class="bulb red"></div>
-    <div class="bulb green"></div>
-    <div class="bulb yellow"></div>
-    <div class="bulb blue"></div>
-</div>
+    <!-- SNOWFLAKES GENERATED WITH JAVASCRIPT -->
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.innerHTML = "❄";
 
-<div class="container">
+            // random position
+            snowflake.style.left = Math.random() * 100 + "vw";
 
-<h1>🎄 Otto & Mark's Seasonal Services 🎄</h1>
-<p style="text-align:center; font-size:1.2rem;">Reliable snow shoveling • salting • leaf raking — Maplewood, NJ</p>
+            // random size
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
 
-<div style="text-align:center;">
-    <a class="button" href="#pricing">See Pricing</a>
-    <a class="button" href="tel:9177159244">Call Otto</a>
-    <a class="button" href="tel:2014074632">Call Mark</a>
-</div>
+            // random duration
+            snowflake.style.animationDuration = (Math.random() * 5 + 5) + "s";
 
-<!-- SERVICES SECTION -->
-<h2>Seasonal Services</h2>
-<div class="card">
-    <a class="service-link" href="#snow">❄ Snow Shoveling</a>
-    <a class="service-link" href="#salting">🧂 Salting</a>
-    <a class="service-link" href="#raking">🍂 Leaf Raking</a>
-</div>
+            document.body.appendChild(snowflake);
 
+            setTimeout(() => snowflake.remove(), 8000);
+        }
 
-<!-- PRICING SECTION -->
-<h2 id="pricing">Pricing</h2>
-<div class="card">
-    <p><strong>Snow Shoveling:</strong> $25</p>
-    <p><strong>Salting:</strong> Additional $10 (add-on to any service)</p>
-    <p><strong>Leaf Raking:</strong> $25</p>
-</div>
+        setInterval(createSnowflake, 200);
+    </script>
 
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="logo">Otto & Mark's Seasonal Services</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- INDIVIDUAL SERVICE DETAILS -->
-<h2 id="snow">❄ Snow Shoveling</h2>
-<div class="card">
-    <p>Full driveway and walkway clearing — $25</p>
-</div>
+    <!-- HEADER -->
+    <header>
+        <h1>Seasonal Help in Maplewood, NJ</h1>
+        <p>Reliable, affordable, and local. We handle the tough jobs so you don't have to.</p>
+    </header>
 
-<h2 id="salting">🧂 Salting</h2>
-<div class="card">
-    <p>Add traction + prevent ice — $10 add-on to any service.</p>
-</div>
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
+        <div class="card">
+            <h2>Snow Shoveling</h2>
+            <p>$25 per job</p>
+            <button onclick="alert('Snow Shoveling costs $25. Pay with Cash or CashApp.')">
+                View Details
+            </button>
+        </div>
 
-<h2 id="raking">🍂 Leaf Raking</h2>
-<div class="card">
-    <p>Yard cleanup and leaf removal — $25</p>
-</div>
+        <div class="card">
+            <h2>Salting</h2>
+            <p>+$10 with any shoveling order</p>
+            <button onclick="alert('Salting is an additional $10. Available only with shoveling.')">
+                View Details
+            </button>
+        </div>
 
+        <div class="card">
+            <h2>Leaf Raking</h2>
+            <p>$25 per yard</p>
+            <button onclick="alert('Leaf Raking costs $25. Pay with Cash or CashApp.')">
+                View Details
+            </button>
+        </div>
+    </section>
 
-<!-- CONTACT INFO -->
-<h2>Contact & Scheduling</h2>
-<div class="card contact-box">
-    <p><strong>Call Otto:</strong> (917) 715-9244</p>
-    <p><strong>Call Mark:</strong> (201) 407-4632</p>
-    <p><strong>Email:</strong> hubschmannotto@gmail.com</p>
-    <p>Serving Maplewood, NJ and nearby areas.</p>
-</div>
-
-</div>
-
-<footer>
-    Otto & Mark's Seasonal Services • © 2025
-</footer>
+    <!-- CONTACT SECTION -->
+    <section id="contact" style="padding: 40px; background: white; text-align: center;">
+        <h2>Contact Us</h2>
+        <p><b>Otto:</b> 917-715-9244</p>
+        <p><b>Mark:</b> 201-407-4632</p>
+        <p><b>Email:</b> hubschmannotto@gmail.com</p>
+        <p style="margin-top: 20px;">Serving Maplewood, NJ with fast and friendly service.</p>
+    </section>
 
 </body>
 </html>
